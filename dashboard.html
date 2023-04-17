@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard</h1>
+
+    <p>Welcome, <?php echo $_SESSION['username']; ?>!</p>
+
+    <h2>Products</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+        <?php foreach ($products as $product): ?>
+            <tr>
+                <td><?php echo $product['name']; ?></td>
+                <td><?php echo $product['description']; ?></td>
+                <td>$<?php echo number_format($product['price'], 2); ?></td>
+                <td><img src="<?php echo 'uploads/' . $product['image']; ?>" alt="<?php echo $product['name']; ?>" width="100"></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</body>
+</html>
